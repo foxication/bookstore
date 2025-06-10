@@ -1,65 +1,70 @@
 <script setup lang="ts">
+import * as z from 'zod'
+import type { FormSubmitEvent } from '@nuxt/ui'
+
+const loginSchema = z.object({
+  email: z.string().email('Invalid email'),
+  password: z.string().min(8, 'Must be at least 8 characters')
+})
+type LoginSchema = z.output<typeof loginSchema>
 
 const { loggedIn, user, fetch: refreshSession } = useUserSession()
-
-const credentials = reactive({
-  email: '',
-  password: '',
+const submitResponse = ref<undefined | string>(undefined);
+var submitResponseCount = 0;
+const credentials = reactive<Partial<LoginSchema>>({
+  email: undefined,
+  password: undefined
 })
 
-async function handleLogin() {
-
+async function handleLogin(event: FormSubmitEvent<LoginSchema>) {
   $fetch('/api/login', {
     method: 'POST',
-    body: credentials
+    body: event.data
   })
     .then(async () => {
       await refreshSession()
       await navigateTo('/')
     })
-    .catch((reason: Error) => alert(reason.message + reason.stack))
+    .catch((reason) => {
+      submitResponseCount += 1
+      submitResponse.value = reason.statusMessage
+    })
 }
+
 </script>
 
 <template>
   <div class="max-w-md mx-auto py-12">
     <div class="shadow-md p-8">
-      <form @submit.prevent="handleLogin">
-        <div class="space-y-4">
-          <!-- Login Title -->
-          <h1 class="text-2xl font-bold text-center">Login</h1>
+      <UForm :schema="loginSchema" :state="credentials" class="space-y-4 text-2xl" @submit.prevent="handleLogin">
 
-          <!-- Email Input -->
-          <div>
-            <input v-model="credentials.email" id="email" type="email" required
-              class="w-full border border-gray-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-500 px-3 py-2"
-              placeholder="Email">
-          </div>
+        <h1 class="text-2xl font-bold text-center">Login</h1>
 
-          <!-- Password Input -->
-          <div>
-            <input v-model="credentials.password" id="password" type="password" required
-              class="w-full border border-gray-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-500 px-3 py-2"
-              placeholder="Password">
-          </div>
+        <UFormField name="email">
+          <UInput v-model="credentials.email" placeholder="Email" class="w-full" />
+        </UFormField>
 
-          <!-- Submit Button-->
-          <button type="submit" class="w-full bg-black rounded-sm text-white py-2 px-3">
-            Login
-          </button>
+        <UFormField name="password">
+          <UInput v-model="credentials.password" type="password" placeholder="Password" class="w-full" />
+        </UFormField>
 
-          <!-- Switch Between Login and Registration -->
-          <div class="mt-6 text-center text-sm">
-            <p>
-              Don't have an account?
-              <NuxtLink to="/register" class="text-blue-600 hover:underline">
-                Sign Up Now
-              </NuxtLink>
-            </p>
-          </div>
+        <UButton type="submit" color='neutral' class='w-full justify-center'>
+          Login
+        </UButton>
 
+        <UAlert v-if="submitResponse !== undefined" color="error" :title="'Error: ' + submitResponseCount"
+          :description="submitResponse" icon="material-symbols:error-rounded" />
+
+        <div class="mt-6 text-center text-sm">
+          <p>
+            Don't have an account?
+            <NuxtLink to="/register" class="text-blue-600 hover:underline">
+              Sign Up Now
+            </NuxtLink>
+          </p>
         </div>
-      </form>
+
+      </UForm>
     </div>
   </div>
 </template>
