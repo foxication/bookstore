@@ -76,7 +76,9 @@ const product_stock_quantity = 50;
 
           <!-- Description -->
 
-          <p v-if="product && readyToReveal" class="text-gray-600">{{ product.description }}</p>
+          <div v-if="product && readyToReveal" class="text-gray-600">
+            <pre class="text-wrap">{{ product.description }}</pre>
+          </div>
           <USkeleton v-else class="h-24 w-full" />
 
           <!-- Quantity + Add to Cart -->
