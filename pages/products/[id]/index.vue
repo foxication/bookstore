@@ -54,10 +54,8 @@ const product_stock_quantity = 50;
 
         <!-- Product Image -->
 
-        <div v-if="product && readyToReveal" class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm">
-          <div class="w-full h-[600px] bg-blue-950"></div>
-          <!-- <img :src="product.image_url || 'https://placehold.co/600x400?text=No+Image'" :alt="product.title" class="w-full h-auto object-cover" /> -->
-        </div>
+        <img v-if="product && readyToReveal" :src="product.image_url" :alt="product.title"
+          class="w-full h-auto rounded-lg shadow-2xl" />
         <USkeleton v-else class="w-full h-[600px] rounded-lg" />
 
         <!-- Product Information -->
