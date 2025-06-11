@@ -67,13 +67,13 @@ const product_stock_quantity = 50;
           <!-- Title + Price -->
 
           <div class="flex flex-col gap-2">
-            <h1 v-if="product && readyToReveal" class="text-3xl font-bold">{{ product.title }}</h1>
-            <USkeleton v-else class="h-8 w-full" />
-
-            <div v-if="product && readyToReveal" class="text-2xl font-bold text-gray-900 dark:text-gray-50">
+            <div v-if="product && readyToReveal" class="text-4xl font-bold text-gray-900">
               ${{ product.price.toFixed(2) }}
             </div>
-            <USkeleton v-else class="h-8 w-[25%]" />
+            <USkeleton v-else class="h-12 w-[25%]" />
+
+            <h1 v-if="product && readyToReveal" class="text-3xl font-bold">{{ product.title }}</h1>
+            <USkeleton v-else class="h-8 w-[75%]" />
           </div>
 
           <!-- Description -->
@@ -86,7 +86,7 @@ const product_stock_quantity = 50;
           <UForm v-if="product && readyToReveal" :schema="addToCartSchema" :state="addToCart"
             class="grid grid-cols-2 gap-4">
             <UInputNumber v-model="addToCart.quantity" :min="1" :max="10" color='neutral' />
-            <UButton type="submit" color='neutral'>Add to Cart</UButton>
+            <UButton type="submit" color='neutral' class="justify-center">Add to Cart</UButton>
           </UForm>
           <div v-else class="grid grid-cols-2 gap-4">
             <USkeleton class="h-8" />
