@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
   const { email, password } = await readValidatedBody(event, loginSchema.parse);
 
   // get the user from the storage
-  const storage = useStorage('data');
+  const storage = useStorage('assets:server');
   const user_storage = (await storage.getItem<UserLocal[]>('user')) ?? [];
   const userWithPassword = user_storage.find((user) => user.email === email);
 
