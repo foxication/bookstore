@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from "vue";
-import { type Product, type Category } from '~/stores/products'
+import { type Book, type Category } from '~/stores/products'
 import type { RadioGroupItem } from '@nuxt/ui'
 
 const loading = ref(true);
 const error = ref<string | null>(null);
-const products = ref<Product[]>([]);
+const products = ref<Book[]>([]);
 const sortBy = ref("name-asc");
 
 // Status Filter
@@ -27,11 +27,27 @@ const sortByOptions = ref(['Name: A to Z', 'Name: Z to A', 'Price: lowest to mos
 const sortByState = ref('Name: A to Z')
 
 function resetFilters() { }
-function addToCart(product: {
-    id: number;
-    name: string;
-    price: number;
-}) { }
+function addToCart(id: number) { }
+
+// Load products and categories
+onMounted(async () => {
+    try {
+        // Load products
+        loading.value = true;
+        products.value = await $fetch('/api/product-all', { method: 'GET' });
+        loading.value = false;
+
+        // Load categories
+        loadingCategories.value = true;
+        categories.value = await $fetch('/api/category-all', { method: 'GET' });
+        loadingCategories.value = false;
+    } catch (err: any) {
+        error.value = err.message || "Failed to load products";
+        loading.value = false;
+        loadingCategories.value = false;
+        console.error("Error loading data:", err);
+    }
+});
 
 </script>
 
@@ -66,7 +82,8 @@ function addToCart(product: {
                         <div class="space-y-4">
 
                             <!-- Filter by Status -->
-                            <URadioGroup legend="Selling Status" color='neutral' variant="table" default-value="Available" :items="statusFilter" />
+                            <URadioGroup legend="Selling Status" color='neutral' variant="table"
+                                default-value="Available" :items="statusFilter" />
 
                             <!-- Filter by Category -->
                             <div class="pt-4 border-t border-gray-200">
@@ -94,7 +111,8 @@ function addToCart(product: {
 
                             <!-- Reset Filters -->
                             <div class="pt-4 border-gray-200">
-                                <UButton color="neutral" variant="outline" class="w-full justify-center" @click="resetFilters">
+                                <UButton color="neutral" variant="outline" class="w-full justify-center"
+                                    @click="resetFilters">
                                     Reset Filters
                                 </UButton>
                             </div>
@@ -112,7 +130,7 @@ function addToCart(product: {
                         <p class="text-gray-600">
                             {{ ['Showing', filteredProducts.length, 'products'].join(' ') }}
                         </p>
-                        
+
                         <div class="flex items-center space-x-2">
                             <label for="sort" class="text-sm text-gray-600">Sort By:</label>
                             <USelect v-model="sortByState" :items="sortByOptions" class="w-48" />
@@ -134,12 +152,17 @@ function addToCart(product: {
                         </p>
                     </div>
                     <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <!-- <ProductCard v-for="product in filteredProducts" :key="product.id" :product="{
-                            id: product.id,
-                            title: product.title,
-                            price: product.price,
-                            description: product.description,
-                        }" @add-to-cart="addToCart" /> -->
+                        <div v-for="product in filteredProducts" :key="product.id">
+                            <NuxtLink :to="'/products/' + product.id" class="rounded-xl">
+                                <img :src="product.image_url"
+                                    class="w-full aspect-400/600 object-cover rounded-t-xl">
+                                <div class="shadow-md p-3 rounded-b-xl">
+                                    <p class="text-xl font-bold">{{ product.price }} $</p>
+                                    <p class="line-clamp-2">{{ product.title }}</p>
+                                    <p class="font-light">{{ product.author }}</p>
+                                </div>
+                            </NuxtLink>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -2,7 +2,7 @@
 import * as z from 'zod'
 import { ref, onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { type Product } from "~/stores/products"
+import { type Book } from "~/stores/products"
 
 const addToCartSchema = z.object({ quantity: z.number().min(1).max(10) })
 type AddToCartSchema = z.output<typeof addToCartSchema>
@@ -13,7 +13,7 @@ const route = useRoute();
 const productId = computed(() => Number(route.params.id));
 const readyToReveal = ref(false);
 const loadError = ref<string | null>(null);
-const product = ref<Product | null>(null);
+const product = ref<Book | null>(null);
 
 // Fetch product details
 onMounted(async () => {
