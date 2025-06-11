@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
   vite: { plugins: [tailwindcss()] },
-  modules: ['nuxt-auth-utils', '@prisma/nuxt', '@nuxt/ui'],
+  modules: ['nuxt-auth-utils', '@nuxt/ui'],
   ui: {
     fonts: false,
   },

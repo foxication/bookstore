@@ -2,7 +2,7 @@
 import * as z from 'zod'
 import { ref, onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { type Book } from "~/stores/products"
+import { type Book } from "~/stores/storage"
 
 const addToCartSchema = z.object({ quantity: z.number().min(1).max(10) })
 type AddToCartSchema = z.output<typeof addToCartSchema>

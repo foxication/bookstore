@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import prisma from '~/lib/prisma';
+import { local_storage_users } from '~/stores/storage';
 
 const registerSchema = z.object({
   email: z.string().email(),
@@ -17,8 +17,8 @@ export default defineEventHandler(async (event) => {
   );
 
   // check if email already exists in storage
-  const existingUser = await prisma.user.findUnique({ where: { email } });
-  if (existingUser !== null) {
+  const existingUser = local_storage_users.find((user) => user.email === email);
+  if (existingUser !== undefined) {
     return createError({
       statusCode: 400,
       statusMessage: 'User already exists',
@@ -32,11 +32,10 @@ export default defineEventHandler(async (event) => {
   };
 
   // store user data in database
-  await prisma.user.create({
-    data: {
-      ...user,
-      password_hash: await hashPassword(password),
-    },
+  local_storage_users.push({
+    id: local_storage_users.length + 1,
+    ...user,
+    password_hash: await hashPassword(password),
   });
 
   return await setUserSession(event, {

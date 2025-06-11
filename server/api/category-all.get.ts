@@ -1,5 +1,5 @@
-import prisma from '~/lib/prisma';
+import { local_storage_category } from '~/stores/storage';
 
 export default defineEventHandler(async () => {
-  return await prisma.category.findMany();
+  return local_storage_category;
 });

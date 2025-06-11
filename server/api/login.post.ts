@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import prisma from '~/lib/prisma';
+import { local_storage_users } from '~/stores/storage';
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -11,17 +11,17 @@ export default defineEventHandler(async (event) => {
   const { email, password } = await readValidatedBody(event, loginSchema.parse);
 
   // get the user from the storage
-  const user = await prisma.user.findUnique({ where: { email } });
+  const userWithPassword = local_storage_users.find((user) => user.email === email);
 
   // if the user doesn't exist, return an error
-  if (user === null) {
+  if (userWithPassword === undefined) {
     return createError({
       statusCode: 400,
       statusMessage: 'Please check your email and password.',
     });
   }
 
-  const isPasswordValid = await verifyPassword(user.password_hash, password);
+  const isPasswordValid = await verifyPassword(userWithPassword.password_hash, password);
 
   // if the password is invalid, return an error
   if (!isPasswordValid) {
@@ -32,9 +32,9 @@ export default defineEventHandler(async (event) => {
   }
 
   // set user the session without password
-  const { password_hash: excluded, ...userAvailable } = user;
+  const { password_hash: excluded, ...user } = userWithPassword;
   await setUserSession(event, {
-    user,
+    userAvailable: user,
     loggedInAt: new Date(),
   });
 

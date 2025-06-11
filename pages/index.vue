@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from "vue";
-import { type Book, type Category } from '~/stores/products'
+import { type Book, type Category } from '~/stores/storage'
 import type { RadioGroupItem } from '@nuxt/ui'
 
 const loading = ref(true);

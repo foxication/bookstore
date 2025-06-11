@@ -1,5 +1,5 @@
-import prisma from '~/lib/prisma';
+import { local_storage_books } from '~/stores/storage';
 
 export default defineEventHandler(async () => {
-  return await prisma.book.findMany();
+  return local_storage_books;
 });

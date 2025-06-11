@@ -1,9 +1,9 @@
 import { z } from 'zod';
-import prisma from '~/lib/prisma';
+import { local_storage_books } from '~/stores/storage';
 
 const idSchema = z.object({ id: z.number() });
 
 export default defineEventHandler(async (event) => {
   const { id } = await readValidatedBody(event, idSchema.parse);
-  return await prisma.book.findUnique({ where: { id } });
+  return local_storage_books.find((book) => book.id === id);
 });
