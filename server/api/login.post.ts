@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { local_storage_users } from '~/stores/storage';
+import { UserLocal } from '~/stores/storage';
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -11,7 +11,9 @@ export default defineEventHandler(async (event) => {
   const { email, password } = await readValidatedBody(event, loginSchema.parse);
 
   // get the user from the storage
-  const userWithPassword = local_storage_users.find((user) => user.email === email);
+  const storage = useStorage('data');
+  const user_storage = (await storage.getItem<UserLocal[]>('user')) ?? [];
+  const userWithPassword = user_storage.find((user) => user.email === email);
 
   // if the user doesn't exist, return an error
   if (userWithPassword === undefined) {
@@ -21,7 +23,10 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const isPasswordValid = await verifyPassword(userWithPassword.password_hash, password);
+  const isPasswordValid = await verifyPassword(
+    userWithPassword.password_hash,
+    password
+  );
 
   // if the password is invalid, return an error
   if (!isPasswordValid) {
@@ -34,7 +39,7 @@ export default defineEventHandler(async (event) => {
   // set user the session without password
   const { password_hash: excluded, ...user } = userWithPassword;
   await setUserSession(event, {
-    userAvailable: user,
+    user,
     loggedInAt: new Date(),
   });
 

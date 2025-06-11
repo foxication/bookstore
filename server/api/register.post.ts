@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { local_storage_users } from '~/stores/storage';
+import { UserLocal } from '~/stores/storage';
 
 const registerSchema = z.object({
   email: z.string().email(),
@@ -17,7 +17,9 @@ export default defineEventHandler(async (event) => {
   );
 
   // check if email already exists in storage
-  const existingUser = local_storage_users.find((user) => user.email === email);
+  const storage = useStorage('data');
+  const user_storage = (await storage.getItem<UserLocal[]>('user')) ?? [];
+  const existingUser = user_storage.find((user) => user.email === email);
   if (existingUser !== undefined) {
     return createError({
       statusCode: 400,
@@ -32,11 +34,12 @@ export default defineEventHandler(async (event) => {
   };
 
   // store user data in database
-  local_storage_users.push({
-    id: local_storage_users.length + 1,
+  user_storage.push({
+    id: user_storage.length + 1,
     ...user,
     password_hash: await hashPassword(password),
   });
+  await storage.setItem('user', user_storage);
 
   return await setUserSession(event, {
     user,

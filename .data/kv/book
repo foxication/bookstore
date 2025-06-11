@@ -1,0 +1,97 @@
+[
+    {
+        "id": 1,
+        "title": "Dune",
+        "author": "Frank Herbert",
+        "description": "Set on the desert planet Arrakis, Dune is the story of the boy Paul Atreides, heir to a noble family tasked with ruling an inhospitable world where the only thing of value is the “spice” melange, a drug capable of extending life and enhancing consciousness. Coveted across the known universe, melange is a prize worth killing for...\n\nWhen House Atreides is betrayed, the destruction of Paul’s family will set the boy on a journey toward a destiny greater than he could ever have imagined. And as he evolves into the mysterious man known as Muad’Dib, he will bring to fruition humankind’s most ancient and unattainable dream.",
+        "price": 20.3,
+        "image_url": "/covers/dune.png",
+        "stock_quantity": 242,
+        "is_discontinued": false,
+        "created_at": "",
+        "updated_at": "",
+        "categories": [
+            "science",
+            "fantasy"
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Fahrenheit 451",
+        "author": "Ray Bradbury",
+        "description": "Sixty years after its original publication, Ray Bradbury’s internationally acclaimed novel Fahrenheit 451 stands as a classic of world literature set in a bleak, dystopian future. Today its message has grown more relevant than ever before.\n\nGuy Montag is a fireman. His job is to destroy the most illegal of commodities, the printed book, along with the houses in which they are hidden. Montag never questions the destruction and ruin his actions produce, returning each day to his bland life and wife, Mildred, who spends all day with her television “family.” But when he meets an eccentric young neighbor, Clarisse, who introduces him to a past where people didn’t live in fear and to a present where one sees the world through the ideas in books instead of the mindless chatter of television, Montag begins to question everything he has ever known.",
+        "price": 16.2,
+        "image_url": "/covers/fahrenheit.png",
+        "stock_quantity": 320,
+        "is_discontinued": false,
+        "created_at": "",
+        "updated_at": "",
+        "categories": [
+            "science",
+            "fantasy"
+        ]
+    },
+    {
+        "id": 3,
+        "title": "The Martian",
+        "author": "Andy Weir",
+        "description": "Six days ago, astronaut Mark Watney became one of the first people to walk on Mars.\n\nNow, he’s sure he’ll be the first person to die there.\n\nAfter a dust storm nearly kills him and forces his crew to evacuate while thinking him dead, Mark finds himself stranded and completely alone with no way to even signal Earth that he’s alive—and even if he could get word out, his supplies would be gone long before a rescue could arrive.\n\nChances are, though, he won’t have time to starve to death. The damaged machinery, unforgiving environment, or plain-old “human error” are much more likely to kill him first.\n\nBut Mark isn’t ready to give up yet. Drawing on his ingenuity, his engineering skills — and a relentless, dogged refusal to quit — he steadfastly confronts one seemingly insurmountable obstacle after the next. Will his resourcefulness be enough to overcome the impossible odds against him?",
+        "price": 15.0,
+        "image_url": "/covers/the-martian.png",
+        "stock_quantity": 23,
+        "is_discontinued": false,
+        "created_at": "",
+        "updated_at": "",
+        "categories": [
+            "science",
+            "space"
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Do Androids Dream of Electric Sheep?",
+        "author": "Philip K. Dick",
+        "description": "It was January 2021, and Rick Deckard had a license to kill. Somewhere among the hordes of humans out there, lurked several rogue androids. Deckard's assignment--find them and then...\"retire\" them. Trouble was, the androids all looked exactly like humans, and they didn't want to be found!",
+        "price": 40.2,
+        "image_url": "/covers/blade-runner.png",
+        "stock_quantity": 42,
+        "is_discontinued": false,
+        "created_at": "",
+        "updated_at": "",
+        "categories": [
+            "science"
+        ]
+    },
+    {
+        "id": 5,
+        "title": "All Systems Red",
+        "author": "Martha Wells",
+        "description": "\"As a heartless killing machine, I was a complete failure.\"\n\nIn a corporate-dominated space-faring future, planetary missions must be approved and supplied by the Company. For their own safety, exploratory teams are accompanied by Company-supplied security androids. But in a society where contracts are awarded to the lowest bidder, safety isn’t a primary concern.\n\nOn a distant planet, a team of scientists is conducting surface tests, shadowed by their Company-supplied ‘droid--a self-aware SecUnit that has hacked its own governor module and refers to itself (though never out loud) as “Murderbot.” Scornful of humans, Murderbot wants is to be left alone long enough to figure out who it is, but when a neighboring mission goes dark, it's up to the scientists and Murderbot to get to the truth.",
+        "price": 10.4,
+        "image_url": "/covers/all-system-red.png",
+        "stock_quantity": 90,
+        "is_discontinued": false,
+        "created_at": "",
+        "updated_at": "",
+        "categories": [
+            "science",
+            "fantasy",
+            "space"
+        ]
+    },
+    {
+        "id": 6,
+        "title": "I, Robot",
+        "author": "Isaac Asimov",
+        "description": "Isaac Asimov's I, Robot launches readers on an adventure into a not-so-distant future where man and machine , struggle to redefinelife, love, and consciousness—and where the stakes are nothing less than survival. Filled with unforgettable characters, mind-bending speculation, and nonstop action, I, Robot is a powerful reading experience from one of the master storytellers of our time.\n\nI, ROBOT\n\nThey mustn't harm a human being, they must obey human orders, and they must protect their own existence...but only so long as that doesn't violate rules one and two. With these Three Laws of Robotics, humanity embarked on perhaps its greatest adventure: the invention of the first positronic man. It was a bold new era of evolution that would open up enormous possibilities—and unforeseen risks. For the scientists who invented the earliest robots weren't content that their creations should ' remain programmed helpers, companions, and semisentient worker-machines. And soon the robots themselves; aware of their own intelligence, power, and humanity, aren't either.\n\nAs humans and robots struggle to survive together—and sometimes against each other—on earth and in space, the future of both hangs in the balance. Human men and women confront robots gone mad, telepathic robots, robot politicians, and vast robotic intelligences that may already secretly control the world. And both are asking the same questions: What is human? And is humanity obsolete?\n\nIn l, Robot Isaac Asimov changes forever our perception of robots, and human beings and updates the timeless myth of man's dream to play god. with all its rewards—and terrors.",
+        "price": 18.5,
+        "image_url": "/covers/i-robot.png",
+        "stock_quantity": 820,
+        "is_discontinued": false,
+        "created_at": "",
+        "updated_at": "",
+        "categories": [
+            "science"
+        ]
+    }
+]

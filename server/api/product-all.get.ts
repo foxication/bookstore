@@ -1,5 +1,6 @@
-import { local_storage_books } from '~/stores/storage';
+import { Book } from '~/stores/storage';
 
 export default defineEventHandler(async () => {
-  return local_storage_books;
+  const storage = useStorage('data');
+  return (await storage.getItem<Book[]>('book')) ?? [];
 });
