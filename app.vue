@@ -26,7 +26,7 @@ function capitalizeFirstLetter(val: string) {
             <!-- Account -->
             <div v-if="user !== null" class="relative group">
               <button class="font-semibold flex items-center bg-gray-200 rounded-md px-4 py-2">
-                {{ capitalizeFirstLetter(user.name) }}
+                Account: {{ capitalizeFirstLetter(user.name) }}
               </button>
 
               <!-- Dropdown Menu -->
@@ -75,8 +75,18 @@ function capitalizeFirstLetter(val: string) {
                   </NuxtLink>
                 </li>
                 <li>
-                  <NuxtLink to="/products" class="text-gray-600 hover:text-gray-900">
-                    Products
+                  <NuxtLink to="/login" class="text-gray-600 hover:text-gray-900">
+                    Login
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/register" class="text-gray-600 hover:text-gray-900">
+                    Register
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/nowhere" class="text-gray-600 hover:text-gray-900">
+                    Nowhere
                   </NuxtLink>
                 </li>
               </ul>

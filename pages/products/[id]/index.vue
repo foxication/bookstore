@@ -96,7 +96,7 @@ const product_stock_quantity = 50;
           <div v-if="product && readyToReveal" class="border-t border-gray-200 pt-8 space-y-4">
             <div v-if="product_stock_quantity > 0" class="flex items-center gap-x-2">
               <UIcon name="i-uil-box" class="size-5 text-green-500" />
-              <span class="text-gray-600">In Stock: {{ product_stock_quantity }}</span>
+              <span class="text-gray-600">In Stock: {{ product.stock_quantity }}</span>
             </div>
             <div v-else-if="true" class="flex items-center gap-x-2">
               <UIcon name="i-uil-times" class="size-5 text-orange-500" />
