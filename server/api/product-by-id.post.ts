@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   const { id } = await readValidatedBody(event, idSchema.parse);
 
   const storage = useStorage('assets:server');
-  return ((await storage.getItem<Book[]>('book')) ?? []).find(
+  return ((await storage.getItem<Book[]>('book.json')) ?? []).find(
     (book) => book.id === id
   );
 });

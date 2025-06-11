@@ -12,7 +12,7 @@ export default defineEventHandler(async (event) => {
 
   // get the user from the storage
   const storage = useStorage('assets:server');
-  const user_storage = (await storage.getItem<UserLocal[]>('user')) ?? [];
+  const user_storage = (await storage.getItem<UserLocal[]>('user.json')) ?? [];
   const userWithPassword = user_storage.find((user) => user.email === email);
 
   // if the user doesn't exist, return an error

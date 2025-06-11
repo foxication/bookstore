@@ -18,7 +18,7 @@ export default defineEventHandler(async (event) => {
 
   // check if email already exists in storage
   const storage = useStorage('assets:server');
-  const user_storage = (await storage.getItem<UserLocal[]>('user')) ?? [];
+  const user_storage = (await storage.getItem<UserLocal[]>('user.json')) ?? [];
   const existingUser = user_storage.find((user) => user.email === email);
   if (existingUser !== undefined) {
     return createError({
