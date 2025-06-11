@@ -16,15 +16,32 @@ const categories = ref<Category[]>([]);
 const loadingCategories = ref(true);
 const selectedCategories = ref<string[]>([]);
 
+// SortBy
+const sortMap = {
+    fromA: 'Name: A to Z',
+    fromZ: 'Name: Z to A',
+    priceAsc: 'Price: Lowest to Most',
+    priceDesc: 'Price: Most to Lowest',
+}
+const sortByOptions = ref(Object.values(sortMap))
+const sortByState = ref(sortMap['fromA'])
+
 // Filtered
 const filteredProducts = computed(() => {
     let filtered = [...products.value];
+
+    filtered.sort((a, b) => {
+        switch (sortByState.value) {
+            case sortMap['fromA']: return a.title.localeCompare(b.title);
+            case sortMap['fromZ']: return b.title.localeCompare(a.title);
+            case sortMap['priceAsc']: return a.price - b.price;
+            case sortMap['priceDesc']: return b.price - a.price;
+        }
+        return 0;
+    });
+
     return filtered;
 });
-
-// SortBy
-const sortByOptions = ref(['Name: A to Z', 'Name: Z to A', 'Price: lowest to most', 'Price: most to lowest',])
-const sortByState = ref('Name: A to Z')
 
 function resetFilters() { }
 function addToCart(id: number) { }
@@ -124,7 +141,7 @@ onMounted(async () => {
 
                 <div class="md:col-span-3">
 
-                    <!-- Status and Sorting -->
+                    <!-- Counting and Sorting -->
 
                     <div class="mb-6 flex justify-between items-center">
                         <p class="text-gray-600">
@@ -154,8 +171,7 @@ onMounted(async () => {
                     <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div v-for="product in filteredProducts" :key="product.id">
                             <NuxtLink :to="'/products/' + product.id" class="rounded-xl">
-                                <img :src="product.image_url"
-                                    class="w-full aspect-400/600 object-cover rounded-t-xl">
+                                <img :src="product.image_url" class="w-full aspect-400/600 object-cover rounded-t-xl">
                                 <div class="shadow-md p-3 rounded-b-xl">
                                     <p class="text-xl font-bold">{{ product.price }} $</p>
                                     <p class="line-clamp-2">{{ product.title }}</p>
