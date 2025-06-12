@@ -13,11 +13,4 @@ export default defineNuxtConfig({
   colorMode: {
     preference: 'light',
   },
-  $production: {
-    nitro: {
-      storage: {
-        data: { driver: 'vercelKV' },
-      },
-    },
-  },
 });
