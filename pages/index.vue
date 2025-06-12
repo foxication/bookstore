@@ -185,7 +185,7 @@ onMounted(async () => {
                         </p>
                     </div>
                     <div v-else-if="!loadingProducts && readyToReveal"
-                        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
                         <div v-for="product in filteredProducts" :key="product.id">
                             <NuxtLink :to="'/products/' + product.id" class="rounded-xl">
                                 <div class="aspect-2/3 bg-gray-200 rounded-t-xl">
@@ -200,8 +200,8 @@ onMounted(async () => {
                             </NuxtLink>
                         </div>
                     </div>
-                    <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div v-for="id in [1, 2, 3]" :key="id">
+                    <div v-else class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+                        <div v-for="id in [1, 2, 3, 4]" :key="id">
                             <USkeleton class="aspect-6/10 rounded-xl"></USkeleton>
                         </div>
                     </div>
