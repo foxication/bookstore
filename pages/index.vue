@@ -9,7 +9,7 @@ const products = ref<Book[]>([]);
 const sortBy = ref("name-asc");
 
 // Status Filter
-const stockGroupItem = ref<RadioGroupItem[]>(['Available', 'Out of Stoke', 'Discontinued'])
+const stockGroupItem = ref<RadioGroupItem[]>(['Available', 'Out of Stock', 'Discontinued'])
 const stockGroupValue = ref<RadioGroupValue>('Available')
 
 // Categories Filter
@@ -37,11 +37,11 @@ const filteredProducts = computed(() => {
         case 'Available':
             filtered = filtered.filter((book) => book.stock_quantity > 0)
             break;
-        case 'Out of Stoke':
+        case 'Out of Stock':
             filtered = filtered.filter((book) => book.stock_quantity === 0 && !book.is_discontinued)
             break;
         case 'Discontinued':
-            filtered = filtered.filter((book) => book.stock_quantity === 0 && !book.is_discontinued)
+            filtered = filtered.filter((book) => book.stock_quantity === 0 && book.is_discontinued)
             break;
     }
 
@@ -88,7 +88,7 @@ onMounted(async () => {
 
         // Load categories
         loadingCategories.value = true;
-        categories.value = await $fetch('/api/category-all', { method: 'GET' });
+        categories.value = (await $fetch('/api/category-all', { method: 'GET' })).sort((a, b) => a.name.localeCompare(b.name));
         categoryGroupItem.value = categories.value.map((c) => c.name)
         loadingCategories.value = false;
 
@@ -128,7 +128,7 @@ onMounted(async () => {
 
                 <div v-if="!loadingCategories && readyToReveal" class="md:col-span-1">
                     <div class="bg-white p-6 rounded-lg shadow-sm sticky top-4 transition-colors">
-                        <h2 class="text-lg font-semibold mb-4">
+                        <h2 class="text-lg font-semibold mb-4 text-center">
                             Filter Books
                         </h2>
 
@@ -178,7 +178,7 @@ onMounted(async () => {
                     <div v-if="error" class="text-center py-12">
                         <p class="text-red-500">{{ error }}</p>
                     </div>
-                    <div v-else-if="loadingProducts && readyToReveal && filteredProducts.length === 0"
+                    <div v-else-if="!loadingProducts && readyToReveal && filteredProducts.length === 0"
                         class="text-center py-12 bg-white rounded-lg shadow-sm transition-colors">
                         <p class="text-gray-600">
                             No Products Found
