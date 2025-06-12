@@ -39,7 +39,7 @@ export default defineEventHandler(async (event) => {
     ...user,
     password_hash: await hashPassword(password),
   });
-  await storage.setItem('user', user_storage);
+  await storage.setItem('user.json', user_storage);
 
   return await setUserSession(event, {
     user,
