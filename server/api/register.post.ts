@@ -21,10 +21,7 @@ export default defineEventHandler(async (event) => {
 
   const existingUser = await user_storage.getItem<UserLocal>(email);
   if (existingUser !== null) {
-    return createError({
-      statusCode: 400,
-      statusMessage: 'User already exists',
-    });
+    return createError('User already exists');
   }
 
   // if the user doesn't exist, create a new user object

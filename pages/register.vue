@@ -27,7 +27,7 @@ async function handleRegister(event: FormSubmitEvent<RegistrationSchema>) {
     })
     .catch((reason) => {
       submitResponseCount += 1
-      submitResponse.value = reason.statusMessage
+      submitResponse.value = reason.data?.message ?? 'Unknown Error'
     })
 }
 </script>

@@ -27,7 +27,7 @@ async function handleLogin(event: FormSubmitEvent<LoginSchema>) {
     })
     .catch((reason) => {
       submitResponseCount += 1
-      submitResponse.value = reason.statusMessage
+      submitResponse.value = reason.data?.message ?? 'Unknown Error'
     })
 }
 

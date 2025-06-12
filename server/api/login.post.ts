@@ -16,10 +16,7 @@ export default defineEventHandler(async (event) => {
 
   // if the user doesn't exist, return an error
   if (userWithPassword === null) {
-    return createError({
-      statusCode: 400,
-      statusMessage: 'Please check your email and password.',
-    });
+    return createError('Please check your email and password.');
   }
 
   const isPasswordValid = await verifyPassword(
@@ -29,10 +26,7 @@ export default defineEventHandler(async (event) => {
 
   // if the password is invalid, return an error
   if (!isPasswordValid) {
-    return createError({
-      statusCode: 400,
-      statusMessage: 'Please check your email and password.',
-    });
+    return createError('Please check your email and password.');
   }
 
   // set user the session without password
