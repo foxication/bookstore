@@ -171,7 +171,10 @@ onMounted(async () => {
                     <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div v-for="product in filteredProducts" :key="product.id">
                             <NuxtLink :to="'/products/' + product.id" class="rounded-xl">
-                                <img :src="product.image_url" class="w-full aspect-400/600 object-cover rounded-t-xl">
+                                <div class="aspect-2/3 bg-gray-200 rounded-t-xl">
+                                    <img :src="product.image_url" loading="lazy"
+                                        class="w-full aspect-400/600 object-cover rounded-t-xl">
+                                </div>
                                 <div class="shadow-md p-3 rounded-b-xl">
                                     <p class="text-xl font-bold">{{ product.price }} $</p>
                                     <p class="line-clamp-2">{{ product.title }}</p>
