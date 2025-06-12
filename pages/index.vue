@@ -3,7 +3,7 @@ import { ref, computed, onMounted } from "vue";
 import { type Book, type Category } from '~/stores/storage'
 import type { RadioGroupItem } from '@nuxt/ui'
 
-const loading = ref(true);
+const loadingProducts = ref(true);
 const error = ref<string | null>(null);
 const products = ref<Book[]>([]);
 const sortBy = ref("name-asc");
@@ -43,6 +43,8 @@ const filteredProducts = computed(() => {
     return filtered;
 });
 
+const readyToReveal = ref(false);
+
 function resetFilters() { }
 function addToCart(id: number) { }
 
@@ -50,17 +52,19 @@ function addToCart(id: number) { }
 onMounted(async () => {
     try {
         // Load products
-        loading.value = true;
+        loadingProducts.value = true;
         products.value = await $fetch('/api/product-all', { method: 'GET' });
-        loading.value = false;
+        loadingProducts.value = false;
 
         // Load categories
         loadingCategories.value = true;
         categories.value = await $fetch('/api/category-all', { method: 'GET' });
         loadingCategories.value = false;
+
+        readyToReveal.value = true;
     } catch (err: any) {
         error.value = err.message || "Failed to load products";
-        loading.value = false;
+        loadingProducts.value = false;
         loadingCategories.value = false;
         console.error("Error loading data:", err);
     }
@@ -72,7 +76,7 @@ onMounted(async () => {
     <div class="flex flex-col gap-y-14">
 
         <!-- Store Title -->
-        <section class="bg-gray-100 py-12 rounded-lg">
+        <section v-if="readyToReveal" class="bg-gray-100 py-12 rounded-lg">
             <div class="container mx-auto px-4">
                 <div class="max-w-3xl mx-auto text-center">
                     <h1 class="text-4xl font-bold mb-4">
@@ -84,13 +88,14 @@ onMounted(async () => {
                 </div>
             </div>
         </section>
+        <USkeleton v-else class="w-full h-45"></USkeleton>
 
         <section>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
 
                 <!-- Filter Sidebar -->
 
-                <div class="md:col-span-1">
+                <div v-if="!loadingCategories && readyToReveal" class="md:col-span-1">
                     <div class="bg-white p-6 rounded-lg shadow-sm sticky top-4 transition-colors">
                         <h2 class="text-lg font-semibold mb-4">
                             Filter Books
@@ -136,6 +141,7 @@ onMounted(async () => {
                         </div>
                     </div>
                 </div>
+                <USkeleton v-else class="rounded-lg top-4 h-110"></USkeleton>
 
                 <!-- Table of Products -->
 
@@ -144,31 +150,31 @@ onMounted(async () => {
                     <!-- Counting and Sorting -->
 
                     <div class="mb-6 flex justify-between items-center">
-                        <p class="text-gray-600">
+                        <p v-if="readyToReveal" class="text-gray-600">
                             {{ ['Showing', filteredProducts.length, 'products'].join(' ') }}
                         </p>
+                        <USkeleton v-else class="h-8 w-[200px]"></USkeleton>
 
-                        <div class="flex items-center space-x-2">
+                        <div v-if="readyToReveal" class="flex items-center space-x-2">
                             <label for="sort" class="text-sm text-gray-600">Sort By:</label>
                             <USelect v-model="sortByState" :items="sortByOptions" class="w-48" />
                         </div>
+                        <USkeleton v-else class="h-8 w-[230px]"></USkeleton>
                     </div>
 
                     <!-- Product Cards -->
 
-                    <div v-if="loading" class="text-center py-12">
-                        <p class="text-gray-500">Loading Products</p>
-                    </div>
-                    <div v-else-if="error" class="text-center py-12">
+                    <div v-if="error" class="text-center py-12">
                         <p class="text-red-500">{{ error }}</p>
                     </div>
-                    <div v-else-if="filteredProducts.length === 0"
+                    <div v-else-if="loadingProducts && readyToReveal && filteredProducts.length === 0"
                         class="text-center py-12 bg-white rounded-lg shadow-sm transition-colors">
                         <p class="text-gray-600">
                             No Products Found
                         </p>
                     </div>
-                    <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div v-else-if="!loadingProducts && readyToReveal"
+                        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div v-for="product in filteredProducts" :key="product.id">
                             <NuxtLink :to="'/products/' + product.id" class="rounded-xl">
                                 <div class="aspect-2/3 bg-gray-200 rounded-t-xl">
@@ -181,6 +187,11 @@ onMounted(async () => {
                                     <p class="font-light">{{ product.author }}</p>
                                 </div>
                             </NuxtLink>
+                        </div>
+                    </div>
+                    <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div v-for="id in [1, 2, 3]" :key="id">
+                            <USkeleton class="aspect-6/10 rounded-xl"></USkeleton>
                         </div>
                     </div>
                 </div>
