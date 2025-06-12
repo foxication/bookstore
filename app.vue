@@ -18,7 +18,7 @@ function capitalizeFirstLetter(val: string) {
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
 
           <!-- Link to Main Page -->
-          <NuxtLink to="/" class="text-xl font-bold">Online Store</NuxtLink>
+          <NuxtLink to="/" class="text-xl font-bold">Book Store</NuxtLink>
 
           <!-- Navigation Buttons -->
           <div class="flex items-center space-x-4">
@@ -58,10 +58,12 @@ function capitalizeFirstLetter(val: string) {
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <h3 class="text-lg font-semibold mb-4">
-                Online Store
+                Book Store
               </h3>
               <p class="text-gray-600">
-                Shop Description
+                A store on the Nuxt 3 stack with responsive design, skeleton
+                loading and authorization system. Developed using Tailwind CSS, 
+                Nuxt UI, Pinia and modern frontend development practices.
               </p>
             </div>
             <div>
@@ -104,7 +106,7 @@ function capitalizeFirstLetter(val: string) {
           </div>
           <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-500 text-sm">
             <p>
-              &copy; 2025 Online Store. All rights reserved.
+              &copy; 2025 Book Store. All rights reserved.
             </p>
           </div>
         </div>

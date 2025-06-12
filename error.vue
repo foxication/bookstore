@@ -12,7 +12,7 @@ const redirectToHome = () => clearError({ redirect: '/' })
     <div class="flex flex-col items-center justify-center text-center min-h-[100vh]">
         <UCard>
             <template #header>
-                <p class=" text-lg font-semibold text-left">Online Store</p>
+                <p class=" text-lg font-semibold text-left">Book Store</p>
             </template>
 
             <p v-if="error?.statusCode !== undefined" class="font-semibold text-7xl text-red-500">
