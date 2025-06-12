@@ -6,7 +6,7 @@
         "description": "Set on the desert planet Arrakis, Dune is the story of the boy Paul Atreides, heir to a noble family tasked with ruling an inhospitable world where the only thing of value is the “spice” melange, a drug capable of extending life and enhancing consciousness. Coveted across the known universe, melange is a prize worth killing for...\n\nWhen House Atreides is betrayed, the destruction of Paul’s family will set the boy on a journey toward a destiny greater than he could ever have imagined. And as he evolves into the mysterious man known as Muad’Dib, he will bring to fruition humankind’s most ancient and unattainable dream.",
         "price": 20.3,
         "image_url": "/covers/dune.png",
-        "stock_quantity": 242,
+        "stock_quantity": 23,
         "is_discontinued": false,
         "created_at": "",
         "updated_at": "",
@@ -22,7 +22,7 @@
         "description": "Sixty years after its original publication, Ray Bradbury’s internationally acclaimed novel Fahrenheit 451 stands as a classic of world literature set in a bleak, dystopian future. Today its message has grown more relevant than ever before.\n\nGuy Montag is a fireman. His job is to destroy the most illegal of commodities, the printed book, along with the houses in which they are hidden. Montag never questions the destruction and ruin his actions produce, returning each day to his bland life and wife, Mildred, who spends all day with her television “family.” But when he meets an eccentric young neighbor, Clarisse, who introduces him to a past where people didn’t live in fear and to a present where one sees the world through the ideas in books instead of the mindless chatter of television, Montag begins to question everything he has ever known.",
         "price": 16.2,
         "image_url": "/covers/fahrenheit.png",
-        "stock_quantity": 320,
+        "stock_quantity": 32,
         "is_discontinued": false,
         "created_at": "",
         "updated_at": "",
@@ -86,12 +86,164 @@
         "description": "Isaac Asimov's I, Robot launches readers on an adventure into a not-so-distant future where man and machine , struggle to redefinelife, love, and consciousness—and where the stakes are nothing less than survival. Filled with unforgettable characters, mind-bending speculation, and nonstop action, I, Robot is a powerful reading experience from one of the master storytellers of our time.\n\nI, ROBOT\n\nThey mustn't harm a human being, they must obey human orders, and they must protect their own existence...but only so long as that doesn't violate rules one and two. With these Three Laws of Robotics, humanity embarked on perhaps its greatest adventure: the invention of the first positronic man. It was a bold new era of evolution that would open up enormous possibilities—and unforeseen risks. For the scientists who invented the earliest robots weren't content that their creations should ' remain programmed helpers, companions, and semisentient worker-machines. And soon the robots themselves; aware of their own intelligence, power, and humanity, aren't either.\n\nAs humans and robots struggle to survive together—and sometimes against each other—on earth and in space, the future of both hangs in the balance. Human men and women confront robots gone mad, telepathic robots, robot politicians, and vast robotic intelligences that may already secretly control the world. And both are asking the same questions: What is human? And is humanity obsolete?\n\nIn l, Robot Isaac Asimov changes forever our perception of robots, and human beings and updates the timeless myth of man's dream to play god. with all its rewards—and terrors.",
         "price": 18.5,
         "image_url": "/covers/i-robot.png",
-        "stock_quantity": 820,
+        "stock_quantity": 82,
         "is_discontinued": false,
         "created_at": "",
         "updated_at": "",
         "categories": [
             "science"
+        ]
+    },
+    {
+        "id": 7,
+        "title": "The Psychology of Money",
+        "author": "Morgan Housel",
+        "description": "Doing well with money isn't necessarily about what you know. It's about how you behave. And behavior is hard to teach, even to really smart people. Money--investing, personal finance, and business decisions--is typically taught as a math-based field, where data and formulas tell us exactly what to do. But in the real world people don't make financial decisions on a spreadsheet. They make them at the dinner table, or in a meeting room, where personal history, your own unique view of the world, ego, pride, marketing, and odd incentives are scrambled together. In The Psychology of Money, award-winning author Morgan Housel shares 19 short stories exploring the strange ways people think about money and teaches you how to make better sense of one of life's most important topics.",
+        "price": 10.5,
+        "image_url": "/covers/7.png",
+        "stock_quantity": 10,
+        "is_discontinued": false,
+        "created_at": "",
+        "updated_at": "",
+        "categories": [
+            "psychology",
+            "finance"
+        ]
+    },
+    {
+        "id": 8,
+        "title": "Adult Children of Emotionally Immature Parents: How to Heal from Distant, Rejecting, or Self-Involved Parents",
+        "author": "Lindsay C. Gibson",
+        "description": "If you grew up with an emotionally immature, unavailable, or selfish parent, you may have lingering feelings of anger, loneliness, betrayal, or abandonment. You may recall your childhood as a time when your emotional needs were not met, when your feelings were dismissed, or when you took on adult levels of responsibility in an effort to compensate for your parent’s behavior. These wounds can be healed, and you can move forward in your life.\n\nIn this breakthrough book, clinical psychologist Lindsay Gibson exposes the destructive nature of parents who are emotionally immature or unavailable. You will see how these parents create a sense of neglect, and discover ways to heal from the pain and confusion caused by your childhood. By freeing yourself from your parents’ emotional immaturity, you can recover your true nature, control how you react to them, and avoid disappointment. Finally, you’ll learn how to create positive, new relationships so you can build a better life.\n\nDiscover the four types of difficult parents:\n\nThe emotional parent instills feelings of instability and anxiety\n\nThe driven parent stays busy trying to perfect everything and everyone\n\nThe passive parent avoids dealing with anything upsetting\n\nThe rejecting parent is withdrawn, dismissive, and derogatory",
+        "price": 9.7,
+        "image_url": "/covers/8.png",
+        "stock_quantity": 0,
+        "is_discontinued": false,
+        "created_at": "",
+        "updated_at": "",
+        "categories": [
+            "psychology"
+        ]
+    },
+    {
+        "id": 9,
+        "title": "Memories, Dreams, Reflections",
+        "author": "C.G. Jung",
+        "description": "In the spring of 1957, when he was eighty-one years old, C. G. Jung undertook the telling of his life story. At regular intervals he had conversations with his colleague and friend Aniela Jaffé, and collaborated with her in the preparation of the text based on these talks. On occasion, he was moved to write entire chapters of the book in his own hand, and he continued to work on the final stages of the manuscript until shortly before his death on June 6, 1961.This edition of Memories, Dreams, Reflections includes Jung's VII Sermones ad Mortuos. It is a fully corrected edition. From the Trade Paperback edition.",
+        "price": 13.9,
+        "image_url": "/covers/9.png",
+        "stock_quantity": 124,
+        "is_discontinued": false,
+        "created_at": "",
+        "updated_at": "",
+        "categories": [
+            "psychology"
+        ]
+    },
+    {
+        "id": 10,
+        "title": "The Art of Loving",
+        "author": "Erich Fromm",
+        "description": "This book is translation of ‘The Art of Loving’ by Erich Fromm. It is scientifically teaching how love is a powerful solution to problems of human existence. In this classic work, Erich Fromm explores love in all its aspects--not only romantic love, steeped in false conceptions and lofty expectations, but also love of parents, children, brotherly love, erotic love, self-love, and the love of God.",
+        "price": 11.9,
+        "image_url": "/covers/10.png",
+        "stock_quantity": 0,
+        "is_discontinued": false,
+        "created_at": "",
+        "updated_at": "",
+        "categories": [
+            "psychology"
+        ]
+    },
+    {
+        "id": 11,
+        "title": "The Shining",
+        "author": "Stephen King",
+        "description": "Jack Torrance's new job at the Overlook Hotel is the perfect chance for a fresh start. As the off-season caretaker at the atmospheric old hotel, he'll have plenty of time to spend reconnecting with his family and working on his writing. But as the harsh winter weather sets in, the idyllic location feels ever more remote...and more sinister. And the only one to notice the strange and terrible forces gathering around the Overlook is Danny Torrance, a uniquely gifted five-year-old.",
+        "price": 20.3,
+        "image_url": "/covers/11.png",
+        "stock_quantity": 8,
+        "is_discontinued": false,
+        "created_at": "",
+        "updated_at": "",
+        "categories": [
+            "fantasy",
+            "horror"
+        ]
+    },
+    {
+        "id": 12,
+        "title": "The Lion, the Witch and the Wardrobe",
+        "author": "C.S. Lewis",
+        "description": "They open a door and enter a world NARNIA...the land beyond the wardrobe, the secret country known only to Peter, Susan, Edmund, and Lucy...the place where the adventure begins. Lucy is the first to find the secret of the wardrobe in the professor's mysterious old house. At first, no one believes her when she tells of her adventures in the land of Narnia. But soon Edmund and then Peter and Susan discover the Magic and meet Aslan, the Great Lion, for themselves. In the blink of an eye, their lives are changed forever.",
+        "price": 25.1,
+        "image_url": "/covers/12.png",
+        "stock_quantity": 29,
+        "is_discontinued": false,
+        "created_at": "",
+        "updated_at": "",
+        "categories": [
+            "fantasy"
+        ]
+    },
+    {
+        "id": 13,
+        "title": "The Hobbit, or There and Back Again",
+        "author": "J.R.R. Tolkien",
+        "description": "In a hole in the ground there lived a hobbit. Not a nasty, dirty, wet hole, filled with the ends of worms and an oozy smell, nor yet a dry, bare, sandy hole with nothing in it to sit down on or to eat: it was a hobbit-hole, and that means comfort.\nWritten for J.R.R. Tolkien’s own children, The Hobbit met with instant critical acclaim when it was first published in 1937. Now recognized as a timeless classic, this introduction to the hobbit Bilbo Baggins, the wizard Gandalf, Gollum, and the spectacular world of Middle-earth recounts of the adventures of a reluctant hero, a powerful and dangerous ring, and the cruel dragon Smaug the Magnificent. The text in this 372-page paperback edition is based on that first published in Great Britain by Collins Modern Classics (1998), and includes a note on the text by Douglas A. Anderson (2001).",
+        "price": 14.1,
+        "image_url": "/covers/13.png",
+        "stock_quantity": 60,
+        "is_discontinued": false,
+        "created_at": "",
+        "updated_at": "",
+        "categories": [
+            "fantasy"
+        ]
+    },
+    {
+        "id": 14,
+        "title": "The Boy in the Striped Pajamas",
+        "author": "John Boyne",
+        "description": "If you start to read this book, you will go on a journey with a nine-year-old boy named Bruno. (Though this isn't a book for nine-year-olds.) And sooner or later you will arrive with Bruno at a fence.\n\nFences like this exist all over the world. We hope you never have to encounter one.",
+        "price": 11.9,
+        "image_url": "/covers/14.png",
+        "stock_quantity": 92,
+        "is_discontinued": false,
+        "created_at": "",
+        "updated_at": "",
+        "categories": [
+            "historical"
+        ]
+    },
+    {
+        "id": 15,
+        "title": "To Kill a Mockingbird",
+        "author": "Harper Lee",
+        "description": "One of the best-loved stories of all time, To Kill a Mockingbird has been translated into more than forty languages, sold more than forty million copies worldwide, served as the basis for an enormously popular motion picture, and was voted one of the best novels of the twentieth century by librarians across the country. A gripping, heart-wrenching, and wholly remarkable coming-of-age tale in a South poisoned by virulent prejudice, it views a world of great beauty and savage iniquities through the eyes of a young girl, as her father — a crusading local lawyer — risks everything to defend a black man unjustly accused of a terrible crime.",
+        "price": 9.6,
+        "image_url": "/covers/15.png",
+        "stock_quantity": 0,
+        "is_discontinued": true,
+        "created_at": "",
+        "updated_at": "",
+        "categories": [
+            "historical"
+        ]
+    },
+    {
+        "id": 16,
+        "title": "Crime and Punishment",
+        "author": "Fyodor Dostoevsky",
+        "description": "Raskolnikov, a destitute and desperate former student, wanders through the slums of St Petersburg and commits a random murder without remorse or regret. He imagines himself to be a great man, a Napoleon: acting for a higher purpose beyond conventional moral law. But as he embarks on a dangerous game of cat and mouse with a suspicious police investigator, Raskolnikov is pursued by the growing voice of his conscience and finds the noose of his own guilt tightening around his neck. Only Sonya, a downtrodden sex worker, can offer the chance of redemption.",
+        "price": 10.1,
+        "image_url": "/covers/16.png",
+        "stock_quantity": 19,
+        "is_discontinued": false,
+        "created_at": "",
+        "updated_at": "",
+        "categories": [
+            "russia"
         ]
     }
 ]

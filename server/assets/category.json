@@ -16,5 +16,35 @@
         "name": "Space",
         "slug": "space",
         "description": "\"Space\" may refer to stories (usually science fiction) which are set in outer space or it may refer to non-fiction about outer space (especially sciences such as astronomy)."
+    },
+    {
+        "id": 4,
+        "name": "Psychology",
+        "slug": "psychology",
+        "description": "Books that involve psychology; the study of mental processes and human behavior."
+    },
+    {
+        "id": 5,
+        "name": "Finance",
+        "slug": "finance",
+        "description": "Finance is a field that deals with the study of investments. It includes the dynamics of assets and liabilities over time under conditions of different degrees of uncertainty and risk. Finance can also be defined as the science of money management. Finance aims to price assets based on their risk level and their expected rate of return. Finance can be broken into three different sub-categories: public finance, corporate finance and personal finance."
+    },
+    {
+        "id": 6,
+        "name": "Horror",
+        "slug": "horror",
+        "description": "Horror fiction is fiction in any medium intended to scare, unsettle, or horrify the audience. Historically, the cause of the \"horror\" experience has often been the intrusion of a supernatural element into everyday human experience. Since the 1960s, any work of fiction with a morbid, gruesome, surreal, or exceptionally suspenseful or frightening theme has come to be called \"horror\". Horror fiction often overlaps science fiction or fantasy, all three of which categories are sometimes placed under the umbrella classification speculative fiction."
+    },
+    {
+        "id": 7,
+        "name": "Historical",
+        "slug": "historical",
+        "description": "Historical fiction presents a story set in the past, often during a significant time period. In historical fiction, the time period is an important part of the setting and often of the story itself.\n\nHistorical fiction may include fictional characters, well-known historical figures or a mixture of the two. Authors of historical fiction usually pay close attention to the details of their stories (settings, clothing, dialogue, etc.) to ensure that they fit the time periods in which the narratives take place.\n\nIn some historical fiction, famous events appear from points of view not recorded in history, showing historical figures dealing with actual events while depicting them in a way that is not recorded in history. Other times, the historical event or time period complements a story's narrative, forming a framework and background for the characters' lives. Sometimes, historical fiction can be for the most part true, but the names of people and places have been in some way altered.\n\nAs this is fiction, artistic license is permitted in regard to presentation and subject matter, so long as it does not deviate in significant ways from established history. If events should deviate significantly, the story may then fall into the genre of alternate history, which is known for speculating on what could have happened if a significant historical event had gone differently. On a similar note, events occurring in historical fiction must adhere to the laws of physics. Stories that extend into the magical or fantastic are often considered historical romance."
+    },
+    {
+        "id": 8,
+        "name": "Russian Literature",
+        "slug": "russia",
+        "description": " Russian literature is the literature in Russian language, written primarily by authors in Russia and its former colonies. Prior to the nineteenth century, the most prominent Russian writers were Gavrila Derzhavin, Denis Fonvizin, Alexander Sumarokov, Vasily Trediakovsky, Nikolay Karamzin and Ivan Krylov.\n\nIn the early nineteenth century, Russian literature underwent an astounding golden age and produced such renounced writers as Nikolai Gogol, Alexander Pushkin, Leo Tolstoy, Fyodor Dostoyevsky, Anton Chekhov and Maxim Gorky. In the twentieth century Russian literature produced such renounced writers as Alexander Blok, Sergei Yesenin, Anna Achmatova, Marina Tsvetaeva, Osip Mandelstam, Boris Pasternak, Joseph Brodsky, Vladimir Mayakovsky, Ivan Bunin, Vladimir Nabokov, Mikhail Sholokhov, Mikhail Bulgakov, Andrey Platonov, Vassily Grossman, Aleksandr Solzhenitsyn and Andrey Kurkov."
     }
 ]
