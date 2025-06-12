@@ -11,11 +11,13 @@ export default defineNuxtConfig({
     fonts: false,
   },
   colorMode: {
-    preference:  'light'
+    preference: 'light',
   },
-  nitro: {
-    storage: {
-      data: { driver: 'vercelKV' },
+  $production: {
+    nitro: {
+      storage: {
+        data: { driver: 'vercelKV' },
+      },
     },
   },
 });

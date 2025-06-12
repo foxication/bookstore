@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { UserLocal } from '~/stores/storage';
+import { user_storage } from '../user-storage';
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -11,12 +12,10 @@ export default defineEventHandler(async (event) => {
   const { email, password } = await readValidatedBody(event, loginSchema.parse);
 
   // get the user from the storage
-  const storage = useStorage('assets:server');
-  const user_storage = (await storage.getItem<UserLocal[]>('user.json')) ?? [];
-  const userWithPassword = user_storage.find((user) => user.email === email);
+  const userWithPassword = await user_storage.getItem<UserLocal>(email);
 
   // if the user doesn't exist, return an error
-  if (userWithPassword === undefined) {
+  if (userWithPassword === null) {
     return createError({
       statusCode: 400,
       statusMessage: 'Please check your email and password.',
