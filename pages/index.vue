@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from "vue";
 import { type Book, type Category } from '~/stores/storage'
-import type { RadioGroupItem } from '@nuxt/ui'
+import type { CheckboxGroupItem, CheckboxGroupValue, RadioGroupItem, RadioGroupValue } from '@nuxt/ui'
 
 const loadingProducts = ref(true);
 const error = ref<string | null>(null);
@@ -9,12 +9,14 @@ const products = ref<Book[]>([]);
 const sortBy = ref("name-asc");
 
 // Status Filter
-const statusFilter = ref<RadioGroupItem[]>(['Available', 'Out of Stoke', 'Discontinued'])
+const stockGroupItem = ref<RadioGroupItem[]>(['Available', 'Out of Stoke', 'Discontinued'])
+const stockGroupValue = ref<RadioGroupValue>('Available')
 
 // Categories Filter
 const categories = ref<Category[]>([]);
+const categoryGroupItem = ref<CheckboxGroupItem[]>([])
+const categoryGroupValue = ref<CheckboxGroupValue[]>([])
 const loadingCategories = ref(true);
-const selectedCategories = ref<string[]>([]);
 
 // SortBy
 const sortMap = {
@@ -30,6 +32,31 @@ const sortByState = ref(sortMap['fromA'])
 const filteredProducts = computed(() => {
     let filtered = [...products.value];
 
+    // Apply stock availability filter
+    switch (stockGroupValue.value) {
+        case 'Available':
+            filtered = filtered.filter((book) => book.stock_quantity > 0)
+            break;
+        case 'Out of Stoke':
+            filtered = filtered.filter((book) => book.stock_quantity === 0 && !book.is_discontinued)
+            break;
+        case 'Discontinued':
+            filtered = filtered.filter((book) => book.stock_quantity === 0 && !book.is_discontinued)
+            break;
+    }
+
+    // Apply category filter
+    if (categoryGroupValue.value.length > 0) {
+        const selectedSlugs = categoryGroupValue.value.map((t) => categories.value.find((c) => c.name === t)?.slug);
+        filtered = filtered.filter((product) => {
+            for (const categorySlug of product.categories) {
+                if (selectedSlugs.includes(categorySlug)) return true;
+            }
+            return false;
+        })
+    }
+
+    // Apply sorting
     filtered.sort((a, b) => {
         switch (sortByState.value) {
             case sortMap['fromA']: return a.title.localeCompare(b.title);
@@ -45,7 +72,10 @@ const filteredProducts = computed(() => {
 
 const readyToReveal = ref(false);
 
-function resetFilters() { }
+function resetFilters() {
+    stockGroupValue.value = "Available";
+    categoryGroupValue.value = [];
+}
 function addToCart(id: number) { }
 
 // Load products and categories
@@ -59,6 +89,7 @@ onMounted(async () => {
         // Load categories
         loadingCategories.value = true;
         categories.value = await $fetch('/api/category-all', { method: 'GET' });
+        categoryGroupItem.value = categories.value.map((c) => c.name)
         loadingCategories.value = false;
 
         readyToReveal.value = true;
@@ -105,31 +136,11 @@ onMounted(async () => {
 
                             <!-- Filter by Status -->
                             <URadioGroup legend="Selling Status" color='neutral' variant="table"
-                                default-value="Available" :items="statusFilter" />
+                                v-model="stockGroupValue" :items="stockGroupItem" />
 
                             <!-- Filter by Category -->
-                            <div class="pt-4 border-t border-gray-200">
-                                <h3 class="text-sm font-medium text-gray-700 mb-1">Categories</h3>
-                                <div class="space-y-2 mt-2">
-                                    <div v-if="loadingCategories" class="text-sm text-gray-500">
-                                        Loading Categories
-                                    </div>
-                                    <div v-else-if="categories.length === 0" class="text-sm text-gray-500">
-                                        No Categories
-                                    </div>
-                                    <div v-else class="space-y-2">
-                                        <div class="flex items-center" v-for="category in categories"
-                                            :key="category.id">
-                                            <input type="checkbox" :id="`category-${category.id}`"
-                                                :value="category.slug" v-model="selectedCategories"
-                                                class="h-4 w-4 text-blue-600 focus:ring-blue-500" />
-                                            <label :for="`category-${category.id}`" class="ml-2 text-sm text-gray-600">
-                                                {{ category.name }}
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <UCheckboxGroup legend="Categories" color="neutral" variant="table"
+                                v-model="categoryGroupValue" :items="categoryGroupItem" />
 
                             <!-- Reset Filters -->
                             <div class="pt-4 border-gray-200">
