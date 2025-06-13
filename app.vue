@@ -1,9 +1,23 @@
 <script setup lang="ts">
+import type { DropdownMenuItem } from '@nuxt/ui';
+
 const { user, fetch: refreshSession, clear } = useUserSession()
+
+const accountItems = ref<DropdownMenuItem[]>([
+  {
+    label: 'Cart',
+    icon: 'i-uil-cart',
+    to: '/cart'
+  },
+  {
+    label: 'Logout',
+    icon: 'i-uil-signout',
+    onSelect() { logout() }
+  }
+])
 
 function logout() {
   clear();
-  navigateTo("/");
 }
 
 function capitalizeFirstLetter(val: string) {
@@ -23,28 +37,18 @@ function capitalizeFirstLetter(val: string) {
           <!-- Navigation Buttons -->
           <div class="flex items-center space-x-4">
 
-            <!-- Account -->
-            <div v-if="user !== null" class="relative group">
-              <button class="font-semibold flex items-center bg-gray-200 rounded-md px-4 py-2">
-                Account: {{ capitalizeFirstLetter(user.name) }}
-              </button>
+            <!-- Account Menu-->
+            <UDropdownMenu v-if="user !== null" arrow :items="accountItems" :content="{ align: 'end' }"
+              :ui="{ content: 'w-48' }">
+              <UButton :label="capitalizeFirstLetter(user.name)" trailing-icon="i-uil-user" color="neutral"
+                variant="subtle" />
+            </UDropdownMenu>
 
-              <!-- Dropdown Menu -->
-
-              <div class="absolute right-0 w-56 bg-white rounded-md shadow-lg py-1 z-10 hidden group-hover:block">
-                <NuxtLink to="/account/orders" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                  Orders
-                </NuxtLink>
-                <button @click="logout" class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
-                  Logout
-                </button>
-              </div>
-            </div>
-
-            <!-- Login -->
-            <NuxtLink v-else to="/login" class="font-semibold flex items-center bg-gray-200 rounded-md px-4 py-2">
-              Login
-            </NuxtLink>
+            <!-- Login and Registration -->
+            <UButtonGroup v-else orientation="horizontal">
+              <UButton color="neutral" variant="subtle" label="Login" to="/login" />
+              <UButton color="neutral" variant="subtle" label="Register" to="register" />
+            </UButtonGroup>
           </div>
         </div>
       </header>
@@ -62,7 +66,7 @@ function capitalizeFirstLetter(val: string) {
               </h3>
               <p class="text-gray-600">
                 A store on the Nuxt 3 stack with responsive design, skeleton
-                loading and authorization system. Developed using Tailwind CSS, 
+                loading and authorization system. Developed using Tailwind CSS,
                 Nuxt UI, Pinia and modern frontend development practices.
               </p>
             </div>
